@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case3D — BRGP Informativna Ponuda 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #b8962e;
+  --gold-light: #d4b050;
+  --gold-pale: #f5f0e4;
+  --gold-dark: #8a6e1f;
+  --black: #0f0f0f;
+  --off-black: #1a1a1a;
+  --dark: #242424;
+  --mid: #555;
+  --light: #aaa;
+  --border: rgba(184,150,46,0.2);
+  --border-light: rgba(255,255,255,0.08);
+  --bg: #0f0f0f;
+  --surface: #161616;
+  --surface2: #1e1e1e;
+  --white: #f5f2ec;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem;
+  border-bottom: 0.5px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,150,46,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.logo {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  color: var(--white);
+}
+.logo span { color: var(--gold); }
+.hero-meta {
+  text-align: right;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--light);
+  line-height: 1.8;
+}
+.hero-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 4rem 0;
+}
+.hero-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 8vw, 96px);
+  font-weight: 300;
+  line-height: 1.0;
+  letter-spacing: -1px;
+  color: var(--white);
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+}
+.hero-stats {
+  display: flex;
+  gap: 3rem;
+}
+.hero-stat-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+}
+.hero-stat-lbl {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--light);
+  margin-top: 4px;
+}
+.scroll-hint {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--light);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.scroll-hint::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 0.5px;
+  background: var(--gold);
+}
+
+/* NAV */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15,15,15,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--border);
+  padding: 0 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+.nav-logo {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+.nav-links a {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-total {
+  font-size: 12px;
+  color: var(--white);
+  font-weight: 500;
+}
+
+/* SECTIONS */
+section {
+  padding: 6rem 3rem;
+  border-bottom: 0.5px solid var(--border);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+.section-desc {
+  font-size: 14px;
+  color: var(--light);
+  max-width: 560px;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+/* PHASE TABS */
+.phase-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 2.5rem;
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.phase-tab {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border: none;
+  border-right: 0.5px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+.phase-tab:last-child { border-right: none; }
+.phase-tab .tab-num {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--light);
+  margin-bottom: 4px;
+}
+.phase-tab .tab-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.phase-tab .tab-price {
+  font-size: 11px;
+  color: var(--gold);
+}
+.phase-tab.active {
+  background: var(--surface);
+  border-bottom: 2px solid var(--gold);
+}
+.phase-tab:hover:not(.active) { background: var(--surface2); }
+
+/* PHASE PANEL */
+.phase-panel { display: none; }
+.phase-panel.active { display: block; }
+
+.panel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  margin-bottom: 2rem;
+}
+.panel-cell {
+  background: var(--bg);
+  padding: 1.5rem;
+}
+.panel-cell-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+/* DELIVERABLE ITEMS */
+.item-list { list-style: none; }
+.item-list li {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 0.5px solid var(--border-light);
+  font-size: 13px;
+  color: var(--white);
+  line-height: 1.5;
+}
+.item-list li:last-child { border-bottom: none; }
+.item-list li::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+.item-list .item-sub {
+  display: block;
+  font-size: 11px;
+  color: var(--light);
+  margin-top: 2px;
+}
+
+/* TIMELINE */
+.timeline { margin-bottom: 2rem; }
+.tl-item {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 0.5px solid var(--border-light);
+  align-items: flex-start;
+}
+.tl-item:last-child { border-bottom: none; }
+.tl-badge {
+  font-size: 10px;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border: 0.5px solid var(--gold-dark);
+  color: var(--gold);
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+.tl-content { font-size: 13px; color: var(--white); line-height: 1.5; }
+.tl-content span { display: block; font-size: 11px; color: var(--light); margin-top: 3px; }
+
+/* PRICE BOX */
+.price-box {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
+.price-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 0.5px solid var(--border);
+}
+.price-main {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+}
+.price-note { font-size: 11px; color: var(--light); margin-top: 4px; }
+.price-rows {}
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 0.5px solid var(--border-light);
+  font-size: 13px;
+}
+.price-row:last-child { border-bottom: none; }
+.price-row-lbl { color: var(--light); }
+.price-row-val { color: var(--white); font-weight: 500; }
+.price-row-val.gold { color: var(--gold); }
+.price-row-val.inc {
+  font-size: 11px;
+  color: #4caf8a;
+  font-weight: 400;
+}
+
+/* OBJECTIONS */
+.objections-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  margin-bottom: 2rem;
+}
+.obj-card {
+  background: var(--bg);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.obj-card:hover { background: var(--surface); }
+.obj-card.open { background: var(--surface); }
+.obj-q {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.obj-q .arrow {
+  font-size: 16px;
+  color: var(--gold);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.obj-card.open .arrow { transform: rotate(45deg); }
+.obj-a {
+  display: none;
+  font-size: 13px;
+  color: var(--light);
+  line-height: 1.7;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 0.5px solid var(--border);
+}
+.obj-card.open .obj-a { display: block; }
+.obj-highlight {
+  display: inline-block;
+  background: rgba(184,150,46,0.12);
+  color: var(--gold);
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+/* SUMMARY */
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+.summary-table th {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  font-weight: 500;
+  text-align: left;
+  padding: 0 0 1rem 0;
+  border-bottom: 0.5px solid var(--border);
+}
+.summary-table td {
+  padding: 1rem 0;
+  font-size: 13px;
+  border-bottom: 0.5px solid var(--border-light);
+  vertical-align: top;
+}
+.summary-table tr:last-child td { border-bottom: none; }
+.summary-table .faza { color: var(--gold); font-weight: 500; font-size: 11px; letter-spacing: 1px; }
+.summary-table .name { color: var(--white); }
+.summary-table .price-col { color: var(--white); text-align: right; white-space: nowrap; }
+.grand-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  border: 0.5px solid var(--gold-dark);
+  margin-bottom: 3rem;
+}
+.gt-lbl {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--light);
+}
+.gt-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+}
+.gt-sub { font-size: 12px; color: var(--light); margin-top: 4px; text-align: right; }
+
+/* CONTACT */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+}
+.contact-cell {
+  background: var(--bg);
+  padding: 2rem;
+}
+.contact-lbl {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.contact-val {
+  font-size: 14px;
+  color: var(--white);
+  font-weight: 400;
+}
+.contact-val a { color: var(--gold); text-decoration: none; }
+
+/* DISCLAIMER */
+.disclaimer {
+  margin-top: 4rem;
+  padding: 2rem 3rem;
+  border-top: 0.5px solid var(--border);
+  font-size: 11px;
+  color: var(--light);
+  line-height: 1.8;
+  text-align: center;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* FULL WIDTH SECTIONS */
+.full-section {
+  padding: 6rem 3rem;
+  border-bottom: 0.5px solid var(--border);
+}
+.full-inner { max-width: 1100px; margin: 0 auto; }
+
+/* NAPOMENA BOX */
+.napomena {
+  background: var(--surface);
+  border-left: 2px solid var(--gold);
+  padding: 1.25rem 1.5rem;
+  font-size: 13px;
+  color: var(--light);
+  line-height: 1.7;
+  margin-top: 1.5rem;
+}
+.napomena strong { color: var(--white); font-weight: 500; }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-headline { animation: fadeUp 0.8s ease both; }
+.hero-stats { animation: fadeUp 0.8s 0.2s ease both; }
+
+@media (max-width: 768px) {
+  .hero { padding: 2rem; }
+  section, .full-section { padding: 4rem 1.5rem; }
+  .sticky-nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .panel-grid { grid-template-columns: 1fr; }
+  .objections-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+  .phase-tabs { flex-direction: column; }
+  .phase-tab { border-right: none; border-bottom: 0.5px solid var(--border); }
+  .gt-val { font-size: 36px; }
+  .summary-table { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-top">
+    <div class="logo">CAS<span>E</span>3D</div>
+    <div class="hero-meta">
+      INFORMATIVNA PONUDA<br>
+      BRGP · 2026<br>
+      POVERLJIVO
+    </div>
+  </div>
+  <div class="hero-center">
+    <div>
+      <div class="hero-headline">
+        Jedinstveno<br>iskustvo prodaje<br>i kupovine<br><em>nekretnina.</em>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-val">445</div>
+        <div class="hero-stat-lbl">STAMBENIH JEDINICA</div>
+      </div>
+      <div>
+        <div class="hero-stat-val">45</div>
+        <div class="hero-stat-lbl">TIPSKIH OSNOVA</div>
+      </div>
+      <div>
+        <div class="hero-stat-val">80.000 m²</div>
+        <div class="hero-stat-lbl">BRUTO POVRŠINA</div>
+      </div>
+      <div>
+        <div class="hero-stat-val">3</div>
+        <div class="hero-stat-lbl">FAZE REALIZACIJE</div>
+      </div>
+    </div>
+    <div class="scroll-hint">SCROLL ZA DETALJE</div>
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <div class="nav-logo">CASE3D</div>
+  <div class="nav-links">
+    <a href="#faze">Faze</a>
+    <a href="#primedbe">Primedbe</a>
+    <a href="#rekapitulacija">Rekapitulacija</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+  <div class="nav-total">od $208,500</div>
+</nav>
+
+<!-- UVOD -->
+<div class="full-section" id="uvod">
+  <div class="full-inner">
+    <div class="section-label">O KOMPANIJI</div>
+    <div class="section-title">Revolucionišemo<br><em>iskustvo</em> kupovine.</div>
+    <div class="section-desc">Case3D razvija vizualizacione i interaktivne platforme koje personalizuju prodaju nekretnina, emocionalno angažuju kupce i isporučuju iskustva koja prodaju. Sa 21 godinom iskustva i 200+ zadovoljnih klijenata širom sveta.</div>
+
+    <div class="panel-grid">
+      <div class="panel-cell">
+        <div class="panel-cell-label">MISIJA</div>
+        <p style="font-size:14px;color:#ccc;line-height:1.8;">Razvijamo prezentacije nekretnina do granica mogućeg. Kao tim arhitektonskih dizajnera i tehnologa, na jedinstven način prevodimo vašu viziju projekta u vizuale koji transportuju kupce i investitore.</p>
+      </div>
+      <div class="panel-cell">
+        <div class="panel-cell-label">REFERENCE</div>
+        <ul class="item-list">
+          <li>Belgrade Waterfront — Complete Sales Experience<span class="item-sub">Beograd · Flagship projekat</span></li>
+          <li>Lustica Bay — Complete Sales Experience<span class="item-sub">Crna Gora · Luksuzni resort razvoj</span></li>
+          <li>Unreal Engine Authorized Service Partner<span class="item-sub">Jedini u regionu</span></li>
+          <li>200+ realizovanih projekata<span class="item-sub">Europa, MENA, Azija</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="napomena">
+      <strong>Napomena o opsegu:</strong> Na osnovu zahteva, Case3D preuzima kompletnu izradu 3D sadržaja (modeliranje, animacije, renderovanje, Unreal Engine produkcija). Od klijenta se očekuje dostava arhitektonske dokumentacije i brand materijala prema specifikaciji po fazama.
+    </div>
+  </div>
+</div>
+
+<!-- FAZE -->
+<div class="full-section" id="faze">
+  <div class="full-inner">
+    <div class="section-label">PREDLOG REŠENJA</div>
+    <div class="section-title">Tri faze.<br><em>Jedan ekosistem.</em></div>
+    <div class="section-desc">Svaka faza može da se realizuje nezavisno. Preporučujemo fazni pristup koji omogućava da prodaja krene pre završetka kompletnog sistema.</div>
+
+    <div class="phase-tabs">
+      <button class="phase-tab active" onclick="switchPhase(1)">
+        <div class="tab-num">FAZA 01</div>
+        <div class="tab-name">Touch Screen</div>
+        <div class="tab-price">od $165,000</div>
+      </button>
+      <button class="phase-tab" onclick="switchPhase(2)">
+        <div class="tab-num">FAZA 02</div>
+        <div class="tab-name">Sooada Platforma</div>
+        <div class="tab-price">$24,000 / godišnje</div>
+      </button>
+      <button class="phase-tab" onclick="switchPhase(3)">
+        <div class="tab-num">FAZA 03</div>
+        <div class="tab-name">Marketing Materijali</div>
+        <div class="tab-price">od $19,500</div>
+      </button>
+    </div>
+
+    <!-- FAZA 1 -->
+    <div class="phase-panel active" id="phase-1">
+      <div class="panel-grid">
+        <div class="panel-cell">
+          <div class="panel-cell-label">ŠTA JE UKLJUČENO</div>
+          <ul class="item-list">
+            <li>Interaktivni 3D master plan kompleksa u Unreal Engineu<span class="item-sub">Rotacija, zoom, navigacija po projektu</span></li>
+            <li>Integracija okoline na osnovu drone snimaka<span class="item-sub">Fotogrametrija — Case3D organizuje snimanje</span></li>
+            <li>Animirani pokretni objekti<span class="item-sub">Ljudi, automobili, ptice, kućni ljubimci</span></li>
+            <li>3D ture stanova — 45 tipskih osnova<span class="item-sub">Parametarski prilagođene za svih 445 jedinica</span></li>
+            <li>Realni pogledi sa balkona<span class="item-sub">Po orijentaciji i spratu — 20–60 pozicija</span></li>
+            <li>2× fly-through video<span class="item-sub">Eksterijer + enterijer — cinematic Unreal Engine</span></li>
+            <li>Dnevni i noćni režim<span class="item-sub">Dinamičko osvetljenje jednim klikom</span></li>
+            <li>Touch screen hardware<span class="item-sub">Kompjuter + ekran — uključeno u cenu</span></li>
+          </ul>
+        </div>
+        <div class="panel-cell">
+          <div class="panel-cell-label">TEHNIČKE NAPOMENE</div>
+          <ul class="item-list">
+            <li>Unreal Engine Authorized Service Partner<span class="item-sub">Case3D je jedini sertifikovani partner u regionu</span></li>
+            <li>Lifetime licenca — bez godišnje naknade<span class="item-sub">Platite jednom, koristite zauvek</span></li>
+            <li>Parametarski sistem za 445 jedinica<span class="item-sub">Svaki stan zna koji tip = koja tura = koji pogled</span></li>
+            <li>Real-time sinhronizacija sa Sooada platformom<span class="item-sub">Promena statusa stana = trenutna promena na ekranu</span></li>
+          </ul>
+          <div class="panel-cell-label" style="margin-top:1.5rem;">ŠTA KLIJENT DOSTAVLJA</div>
+          <ul class="item-list">
+            <li>Arhitektonski projekat kompleksa<span class="item-sub">DWG / RVT format</span></li>
+            <li>Brand guidelines projekta<span class="item-sub">Logo, boje, fontovi, moodboard</span></li>
+            <li>Specifikacije interijera po tipu<span class="item-sub">Materijali, nameštaj, reference slike</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel-cell-label">TIMELINE REALIZACIJE</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-badge">MESEC 1–2</div>
+          <div class="tl-content">Kick-off, prijem dokumentacije, 3D modeliranje kompleksa, drone snimanje lokacije<span>Case3D organizuje i koordinira snimanje</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-badge">MESEC 2–4</div>
+          <div class="tl-content">Unreal Engine produkcija — master plan, animirani objekti, dan/noć sistem<span>Milestone prezentacija klijentu na kraju faze</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-badge">MESEC 4–6</div>
+          <div class="tl-content">3D ture svih 45 tipova stanova, pogledi sa balkona, fly-through videi<span>Review i korekcije po tipu</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-badge">MESEC 6–8</div>
+          <div class="tl-content">Integracija sa Sooada platformom, hardware setup u prodajnom centru, testiranje i isporuka<span>Obuka prodajnog tima uključena</span></div>
+        </div>
+      </div>
+
+      <div class="price-box">
+        <div class="price-box-header">
+          <div>
+            <div style="font-size:11px;letter-spacing:2px;color:var(--light);margin-bottom:8px;">FAZA 01 · TOUCH SCREEN</div>
+            <div class="price-main">$165,000 – $205,000</div>
+            <div class="price-note">Lifetime licenca · Hardware uključen · 1 godina podrške</div>
+          </div>
+          <div style="font-size:11px;color:var(--light);text-align:right;line-height:2;">
+            Master Plan tier<br>
+            Unreal Engine<br>
+            Authorized Partner
+          </div>
+        </div>
+        <div class="price-rows">
+          <div class="price-row"><span class="price-row-lbl">Base Touch Screen Master Plan licenca</span><span class="price-row-val">od $115,000</span></div>
+          <div class="price-row"><span class="price-row-lbl">45 tipskih 3D stanova — interior modeling</span><span class="price-row-val">$18,000 – $30,000</span></div>
+          <div class="price-row"><span class="price-row-lbl">Drone integracija / fotogrametrija okoline</span><span class="price-row-val">$7,000 – $13,000</span></div>
+          <div class="price-row"><span class="price-row-lbl">Animirani NPC objekti (ljudi, vozila, ptice)</span><span class="price-row-val">$7,000 – $12,000</span></div>
+          <div class="price-row"><span class="price-row-lbl">Pogledi sa balkona (20–60 pozicija)</span><span class="price-row-val">$10,000 – $18,000</span></div>
+          <div class="price-row"><span class="price-row-lbl">2× fly-through cinematic video</span><span class="price-row-val">$10,000 – $17,000</span></div>
+          <div class="price-row"><span class="price-row-lbl">Dan/noć dynamic lighting sistem</span><span class="price-row-val gold">uključeno</span></div>
+          <div class="price-row"><span class="price-row-lbl">Hardware (kompjuter + touch screen)</span><span class="price-row-val gold">uključeno</span></div>
+          <div class="price-row"><span class="price-row-lbl">Obuka prodajnog tima</span><span class="price-row-val gold">uključeno</span></div>
+        </div>
+      </div>
+      <div class="napomena"><strong>ROI perspektiva:</strong> Cena po stanu = $370. Ako Touch Screen ubrzano zatvori prodaju samo 5% stanova brže — to je 22 stana. Na prosečnoj ceni od €150,000/stanu, to je €3,300,000 ubrzanog cash flow-a. Investicija se vraća prvom uspešnom kampanjom.</div>
+    </div>
+
+    <!-- FAZA 2 -->
+    <div class="phase-panel" id="phase-2">
+      <div class="panel-grid">
+        <div class="panel-cell">
+          <div class="panel-cell-label">ŠTA JE UKLJUČENO</div>
+          <ul class="item-list">
+            <li>CRM modul<span class="item-sub">Leadovi, statusi, istorija komunikacije, notifikacije</span></li>
+            <li>Upravljanje inventarom<span class="item-sub">445 jedinica u realnom vremenu — dostupno/rezervisano/prodato</span></li>
+            <li>Baza kupaca i potencijalnih klijenata<span class="item-sub">Kontakti, preferencije, dokumenta, aktivnost</span></li>
+            <li>Integracija planova otplate<span class="item-sub">Kalkulator rata, više varijanti (30/70, 50/50...), PDF export</span></li>
+            <li>Generisanje prodajnih ponuda<span class="item-sub">Branded PDF ponuda za svaki stan jednim klikom</span></li>
+            <li>5 korisničkih naloga sa ulogama<span class="item-sub">Admin, Sales Manager, Agent, Marketing, Read Only</span></li>
+            <li>Full API integracija<span class="item-sub">Sinhronizacija sa Touch Screen-om i eksternim sistemima</span></li>
+            <li>Hosting, maintenance, customer support<span class="item-sub">Mon–Pet 9–16h CET · Odgovor isti dan</span></li>
+          </ul>
+        </div>
+        <div class="panel-cell">
+          <div class="panel-cell-label">KLJUČNA PREDNOST</div>
+          <p style="font-size:13px;color:#ccc;line-height:1.8;margin-bottom:1.5rem;">Platforma može da bude aktivna za <strong style="color:var(--gold);">4 nedelje</strong> — prodaja kreće dok se Touch Screen još radi. Ne čekate 8 meseci da prodate prvi stan.</p>
+          <div class="panel-cell-label">ŠTA KLIJENT DOSTAVLJA</div>
+          <ul class="item-list">
+            <li>Lista svih 445 jedinica sa parametrima<span class="item-sub">Excel / CSV — površine, spratovi, tipovi</span></li>
+            <li>Cenovnik i planovi otplate<span class="item-sub">Sve varijante koje nudite kupcima</span></li>
+            <li>Interni tim i uloge<span class="item-sub">Ko dobija koji od 5 naloga</span></li>
+            <li>API dokumentacija eksternog CRM-a<span class="item-sub">Samo ako već postoji sistem koji se integriše</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel-cell-label">TIMELINE REALIZACIJE</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-badge">NEDELJA 1–2</div>
+          <div class="tl-content">Onboarding, setup korisničkih naloga, import inventara svih 445 jedinica<span>Može da krene paralelno sa Fazom 1</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-badge">NEDELJA 2–3</div>
+          <div class="tl-content">Integracija planova otplate i cenovnika, podešavanje rolova i dozvola<span>Testiranje kalkulatora i PDF generisanja</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-badge">NEDELJA 3–4</div>
+          <div class="tl-content">Obuka tima, testiranje svih funkcionalnosti, go-live<span>Prodajni tim može da počne sa radom</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-badge">KONTINUIRANO</div>
+          <div class="tl-content">Podrška, maintenance, ažuriranja — tokom celog trajanja godišnje licence<span>Mon–Pet 9–16h CET, maks. 1 radni dan za odgovor</span></div>
+        </div>
+      </div>
+
+      <div class="price-box">
+        <div class="price-box-header">
+          <div>
+            <div style="font-size:11px;letter-spacing:2px;color:var(--light);margin-bottom:8px;">FAZA 02 · SOOADA PLATFORMA</div>
+            <div class="price-main">$24,000</div>
+            <div class="price-note">Godišnja licenca · 445 jedinica · Full onboarding uključen</div>
+          </div>
+          <div style="font-size:11px;color:var(--light);text-align:right;line-height:2;">
+            Web-based<br>
+            Real-time<br>
+            Multi-user
+          </div>
+        </div>
+        <div class="price-rows">
+          <div class="price-row"><span class="price-row-lbl">Platform licenca / 1 godina</span><span class="price-row-val">$24,000</span></div>
+          <div class="price-row"><span class="price-row-lbl">Full onboarding i API integracija</span><span class="price-row-val gold">uključeno</span></div>
+          <div class="price-row"><span class="price-row-lbl">Customer support (Mon–Pet 9–16h CET)</span><span class="price-row-val gold">uključeno</span></div>
+          <div class="price-row"><span class="price-row-lbl">Hosting i maintenance</span><span class="price-row-val gold">uključeno</span></div>
+          <div class="price-row"><span class="price-row-lbl">5 korisničkih naloga sa ulogama</span><span class="price-row-val gold">uključeno</span></div>
+          <div class="price-row"><span class="price-row-lbl">Dodatna podrška nakon 1 godine</span><span class="price-row-val">$65 / sat</span></div>
+          <div class="price-row"><span class="price-row-lbl">Funkcionalne izmene nakon isporuke</span><span class="price-row-val">$65 / sat</span></div>
+        </div>
+      </div>
+      <div class="napomena"><strong>Napomena o trajanju licence:</strong> Projekat od 445 stanova realno traje 3–5 godina prodaje. Platforma je aktivna i korisna tokom celog tog perioda — godišnja licenca se obnavlja dok traje prodaja. Touch Screen licenca je lifetime i ostaje zauvek.</div>
+    <div class="phase-panel" id="phase-3">
+      <div class="panel-grid">
+        <div class="panel-cell">
+          <div class="panel-cell-label">ŠTA JE UKLJUČENO</div>
+          <ul class="item-list">
+            <li>Stilizovane osnove sa nameštajem — 45 tipova<span class="item-sub">Prodajni dokumenti, ne tehnički crteži — vizualno privlačni</span></li>
+            <li>Tabela površina po tipu stana<span class="item-sub">Unutrašnja, terasa, ukupna površina — svi tipovi</span></li>
+            <li>Lokator na master planu<span class="item-sub">Pozicija kompleksa u široj okolini</span></li>
+            <li>Lokator na situacionom planu<span class="item-sub">Pozicija stana u okviru kompleksa — blok, lamela</span></li>
+            <li>Floor plate po spratu sa istaknutim stanom<span class="item-sub">15 spratova, susedne jedinice, zajednički prostori</span></li>
+            <li>Brendirano zaglavlje i vizuelni identitet<span class="item-sub">Logo, boje, tipografija — print-ready 300 DPI</span></li>
+            <li>Indikator skale i orijentacije<span class="item-sub">North arrow, scale bar — konzistentno kroz sve dokumente</span></li>
+            <li>Disclaimer tekst<span class="item-sub">Okvirne površine, uslovi prodaje, pravna napomena</span></li>
+          </ul>
+        </div>
+        <div class="panel-cell">
+          <div class="panel-cell-label">AUTOMATIZACIJA</div>
+          <p style="font-size:13px;color:#ccc;line-height:1.8;margin-bottom:1.5rem;">Integracija sa Sooada platformom (Faza 2) omogućava <strong style="color:var(--gold);">automatsko generisanje</strong> branded PDF ponude za svaki od 445 stanova jednim klikom agenta. Nema ručnog rada.</p>
+          <div class="panel-cell-label">ŠTA KLIJENT DOSTAVLJA</div>
+          <ul class="item-list">
+            <li>Arhitektonske osnove svih 45 tipova<span class="item-sub">DWG format sa tačnim površinama</span></li>
+            <li>Floor plate svih spratova<span class="item-sub">DWG format — 15 spratova</span></li>
+            <li>Logo projekta u vektorskom formatu<span class="item-sub">AI / EPS / SVG</span></li>
+            <li>Brand guidelines (boje, fontovi)<span class="item-sub">Ili sloboda da Case3D predloži</span></li>
+            <li>Finalni disclaimer tekst<span class="item-sub">Pravnik klijenta definiše sadržaj</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel-cell-label">TIMELINE REALIZACIJE</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-badge">NEDELJA 1</div>
+          <div class="tl-content">Prijem DWG dokumentacije, brand setup, definisanje stila<span>Review arhitektonskih osnova i korekcije ako su potrebne</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-badge">NEDELJA 2–3</div>
+          <div class="tl-content">Izrada master template-a i 45 tipskih stilizovanih osnova sa nameštajem<span>Review i odobrenje klijenta pre nastavka</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-badge">NEDELJA 3–4</div>
+          <div class="tl-content">Floor plate-ovi za svih 15 spratova, lokatori, zaglavlja, disclaimer<span>Finalizacija svih grafičkih elemenata</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-badge">NEDELJA 4–5</div>
+          <div class="tl-content">Integracija u Sooada platformu — automatsko generisanje 445 PDF ponuda<span>Testiranje sa prodajnim timom</span></div>
+        </div>
+      </div>
+
+      <div class="price-box">
+        <div class="price-box-header">
+          <div>
+            <div style="font-size:11px;letter-spacing:2px;color:var(--light);margin-bottom:8px;">FAZA 03 · MARKETING MATERIJALI</div>
+            <div class="price-main">$19,500 – $27,000</div>
+            <div class="price-note">Jednokratna naknada · 45 tipova · 445 branded PDF dokumenata</div>
+          </div>
+          <div style="font-size:11px;color:var(--light);text-align:right;line-height:2;">
+            Graphic Design<br>
+            Print-ready<br>
+            Auto-generated
+          </div>
+        </div>
+        <div class="price-rows">
+          <div class="price-row"><span class="price-row-lbl">Graphic Design base paket</span><span class="price-row-val">$3,500</span></div>
+          <div class="price-row"><span class="price-row-lbl">45 tipskih stilizovanih osnova sa nameštajem</span><span class="price-row-val">$10,000 – $15,000</span></div>
+          <div class="price-row"><span class="price-row-lbl">Floor plate grafika (15 spratova)</span><span class="price-row-val">$3,000 – $4,500</span></div>
+          <div class="price-row"><span class="price-row-lbl">Master plan i situacioni plan lokatori</span><span class="price-row-val">$3,000 – $4,000</span></div>
+          <div class="price-row"><span class="price-row-lbl">Brendirano zaglavlje i VI integracija</span><span class="price-row-val gold">uključeno</span></div>
+          <div class="price-row"><span class="price-row-lbl">Indikator skale, orijentacije, disclaimer</span><span class="price-row-val gold">uključeno</span></div>
+          <div class="price-row"><span class="price-row-lbl">Integracija u Sooada (auto PDF generisanje)</span><span class="price-row-val gold">uključeno u Fazi 2</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PRIMEDBE -->
+<div class="full-section" id="primedbe">
+  <div class="full-inner">
+    <div class="section-label">ČESTA PITANJA</div>
+    <div class="section-title">Odgovori na<br><em>vaša pitanja.</em></div>
+    <div class="section-desc">Transparentnost je deo naše usluge. Evo odgovora na pitanja koja najčešće postavljaju naši klijenti.</div>
+
+    <div class="objections-grid">
+
+      <div class="obj-card" onclick="toggleObj(this)">
+        <div class="obj-q">Da li je cena fiksna ili se može pregovarati? <span class="arrow">+</span></div>
+        <div class="obj-a">Cene u ovoj ponudi su informativnog karaktera i predstavljaju okvirne iznose. Finalna cena se definiše nakon kick-off sastanka kada preciziramo scope svakog elementa. Nudimo fazni payment plan — ne popust na cenu, nego raspoređeno plaćanje u skladu sa milestoneima isporuke.<div class="obj-highlight">Pilot opcija: 5 tipskih osnova kao proof of concept pre finalnog ugovora</div></div>
+      </div>
+
+      <div class="obj-card" onclick="toggleObj(this)">
+        <div class="obj-q">6–8 meseci je predugo — trebamo brže. <span class="arrow">+</span></div>
+        <div class="obj-a">Faza 2 (platforma) je aktivna za 4 nedelje. Faza 3 (marketing materijali) je gotova za 5 nedelja. Prodaja može da krene odmah — Touch Screen se radi paralelno. Ne čekate 8 meseci da prodate prvi stan, čekate 8 meseci do punog iskustva prodajnog centra.<div class="obj-highlight">Platforma go-live: 4 nedelje od potpisa ugovora</div></div>
+      </div>
+
+      <div class="obj-card" onclick="toggleObj(this)">
+        <div class="obj-q">Može li se to jeftinije uraditi negde drugde? <span class="arrow">+</span></div>
+        <div class="obj-a">Možda — ali ključno pitanje je šta dobijate. Da li nude Unreal Engine produkciju ili pre-rendered video? Da li je touch screen integrisan sa CRM-om u realnom vremenu? Ko je njihov referentni projekat od 400+ stanova? Case3D je realizovao Belgrade Waterfront i Lustica Bay — projekte koji definišu standard u regionu.<div class="obj-highlight">Belgrade Waterfront & Lustica Bay — referentni projekti dostupni na zahtev</div></div>
+      </div>
+
+      <div class="obj-card" onclick="toggleObj(this)">
+        <div class="obj-q">Da li sistem može da podrži 45 tipskih osnova? <span class="arrow">+</span></div>
+        <div class="obj-a">Da — to je upravo ono za šta je sistem dizajniran. Radi se 45 unikatnih 3D modela, a svih 445 stanova se parametarski prilagođava automatski. Svaki stan zna koji je tip, koja mu je 3D tura i koji je pogled sa balkona. Promena cene ili statusa jednog stana = trenutna promena svuda.<div class="obj-highlight">Parametarski sistem — bez ručnog ažuriranja</div></div>
+      </div>
+
+      <div class="obj-card" onclick="toggleObj(this)">
+        <div class="obj-q">Ko će upravljati sistemom interno? <span class="arrow">+</span></div>
+        <div class="obj-a">Sistem je dizajniran za prodajne agente, ne za IT tim. Full onboarding i obuka tima su uključeni u cenu. Pet korisničkih naloga sa jasnim ulogama — svako vidi samo ono što mu treba. Podrška je dostupna Mon–Pet 9–16h CET, odgovor isti radni dan.<div class="obj-highlight">Obuka tima uključena — 1–2 dana sa ključnim osobama</div></div>
+      </div>
+
+      <div class="obj-card" onclick="toggleObj(this)">
+        <div class="obj-q">Šta ako nam trebaju izmene nakon isporuke? <span class="arrow">+</span></div>
+        <div class="obj-a">Sve funkcionalne izmene se dogovaraju pre starta projekta. Nakon isporuke: $65/sat, Mon–Pet. Godišnja platform licenca uključuje maintenance i bugfixeve. Strukturalne izmene su retke jer se sve definiše na projektu startu. Transparentnost cene je prednost — znate unapred šta plaćate.<div class="obj-highlight">$65/sat za izmene · Bugfixevi uključeni u licencu</div></div>
+      </div>
+
+      <div class="obj-card" onclick="toggleObj(this)">
+        <div class="obj-q">Šta se dešava ako ne obnovimo godišnju licencu? <span class="arrow">+</span></div>
+        <div class="obj-a">Touch Screen lifetime licenca ostaje zauvek — to je trajna imovina. Marketing materijali (PDF-ovi) su trajni deliverable. Platforma bez obnove gubi real-time sync i CRM, ali 3D sadržaj ostaje. Realno: projekat od 445 stanova traje 3–5 godina prodaje, tako da je licenca korisna kroz ceo taj period.<div class="obj-highlight">Touch Screen = lifetime · Platforma = godišnje dok traje prodaja</div></div>
+      </div>
+
+      <div class="obj-card" onclick="toggleObj(this)">
+        <div class="obj-q">Možemo li uzeti samo neke faze? <span class="arrow">+</span></div>
+        <div class="obj-a">Da — svaka faza je nezavisna. Preporučujemo minimum Faza 2 + 3 kao entry point ($43,500) — najbrže i najjeftinije za aktiviranje prodaje. Touch Screen može da se doda kada je sales centar fizički spreman. Ili krenite sa Fazom 1 + 2 bez print materijala. Kombinacije su moguće.<div class="obj-highlight">Minimum entry: Faza 2 + 3 = od $43,500</div></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- REKAPITULACIJA -->
+<div class="full-section" id="rekapitulacija">
+  <div class="full-inner">
+    <div class="section-label">FINANSIJSKI PREGLED</div>
+    <div class="section-title"><em>Kompletna</em><br>investicija.</div>
+
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>FAZA</th>
+          <th>USLUGA</th>
+          <th>TIP</th>
+          <th style="text-align:right;">CENA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="faza">01</span></td>
+          <td class="name">Touch Screen — Interaktivna mapa projekta<br><span style="font-size:11px;color:var(--light);">Unreal Engine · Master Plan · Lifetime licenca · Hardware uključen</span></td>
+          <td style="font-size:11px;color:var(--light);">Jednokratno</td>
+          <td class="price-col">$165,000 – $205,000</td>
+        </tr>
+        <tr>
+          <td><span class="faza">02</span></td>
+          <td class="name">Sooada Platforma — CRM + Inventory + Ponude<br><span style="font-size:11px;color:var(--light);">445 jedinica · 5 naloga · Hosting · Support uključen</span></td>
+          <td style="font-size:11px;color:var(--light);">Godišnje</td>
+          <td class="price-col">$24,000 / god</td>
+        </tr>
+        <tr>
+          <td><span class="faza">03</span></td>
+          <td class="name">Marketing Materijali — Branded Floor Plan Paket<br><span style="font-size:11px;color:var(--light);">45 tipova · 445 PDF dokumenata · Print-ready</span></td>
+          <td style="font-size:11px;color:var(--light);">Jednokratno</td>
+          <td class="price-col">$19,500 – $27,000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="grand-total">
+      <div>
+        <div class="gt-lbl">UKUPNA INVESTICIJA</div>
+        <div style="font-size:12px;color:var(--light);margin-top:6px;">Sve 3 faze · Bez PDV-a · USD</div>
+      </div>
+      <div>
+        <div class="gt-val">$208,500 – $256,000</div>
+        <div class="gt-sub">+ $24,000 godišnje za platformu od 2. godine</div>
+      </div>
+    </div>
+
+    <div class="napomena" style="margin-bottom:2rem;">
+      <strong>Šta je uključeno u svaku cenu:</strong> Annual/Lifetime licenca, full inicijalna integracija, hosting i maintenance, customer support (Faza 2: 1 godina), obuka tima. Sve cene su informativnog karaktera — finalna ponuda se definiše nakon kick-off sastanka i dostavljene tehničke dokumentacije.
+    </div>
+
+    <div class="napomena">
+      <strong>Minimum entry paket (Faza 2 + 3):</strong> $43,500 jednokratno + $24,000 godišnje. Platforma aktivna za 4 nedelje, marketing materijali za 5 nedelja. Touch Screen se može dodati u kasnijoj fazi kada je prodajni centar fizički spreman.
+    </div>
+  </div>
+</div>
+
+<!-- KONTAKT -->
+<div class="full-section" id="kontakt">
+  <div class="full-inner">
+    <div class="section-label">SLEDEĆI KORAK</div>
+    <div class="section-title">Zakažite<br><em>demo poziv.</em></div>
+    <div class="section-desc">Rezervišite termin za demo u kome ćemo prikazati Touch Screen u akciji, provesti vas kroz Sooada platformu i odgovoriti na sva pitanja. Demo traje 45–60 minuta.</div>
+
+    <div class="contact-grid">
+      <div class="contact-cell">
+        <div class="contact-lbl">WEB</div>
+        <div class="contact-val"><a href="https://www.case-3d.com" target="_blank">www.case-3d.com</a></div>
+      </div>
+      <div class="contact-cell">
+        <div class="contact-lbl">EMAIL</div>
+        <div class="contact-val"><a href="/cdn-cgi/l/email-protection#e58c8b838aa586849680c8d681cb868a88"><span class="__cf_email__" data-cfemail="97fef9f1f8d7f4f6e4f2baa4f3b9f4f8fa">[email&#160;protected]</span></a></div>
+      </div>
+      <div class="contact-cell">
+        <div class="contact-lbl">TELEFON</div>
+        <div class="contact-val">+381 60 555 0288</div>
+      </div>
+      <div class="contact-cell">
+        <div class="contact-lbl">SEDIŠTE</div>
+        <div class="contact-val">Novi Sad, Srbija</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="disclaimer">
+  Sve cene su izražene u USD bez PDV-a i predstavljaju informativnu ponudu. Finalni iznosi se definišu nakon kick-off sastanka i pregleda tehničke dokumentacije. Renderovani prikazi i specifikacije su okvirne i mogu se razlikovati od finalnog isporuka. Case3D zadržava pravo izmene cenovnika bez prethodne najave. Ovaj dokument je poverljiv i namenjen isključivo primaocima.<br><br>
+  © 2026 Case3D · www.case-3d.com · Novi Sad, Srbija · Informativna ponuda · BRGP projekat
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function switchPhase(n) {
+  document.querySelectorAll('.phase-tab').forEach((t,i) => {
+    t.classList.toggle('active', i === n-1);
+  });
+  document.querySelectorAll('.phase-panel').forEach((p,i) => {
+    p.classList.toggle('active', i === n-1);
+  });
+  document.getElementById('faze').scrollIntoView({behavior:'smooth', block:'start'}
